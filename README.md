@@ -22,6 +22,10 @@ The documentation is available on the website : [http://php-framework.rolandl.fr
 
 ##Changelog
 
+###1.1.1
+
+* Fixed syntax error into the `FormHandler` class.
+
 ###1.1.0
 
 * Updated the way an error 404 is managed
