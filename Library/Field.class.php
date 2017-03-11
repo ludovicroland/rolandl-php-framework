@@ -3,7 +3,7 @@
   
   abstract class Field 
   {
-      
+    
     protected $errorMessage;
     
     protected $label;
@@ -20,7 +20,7 @@
     
     public function __construct(array $options = array()) 
     {
-      if (!empty($options)) 
+      if (empty($options) == false) 
       {
         $this->hydrate($options);
       }
@@ -30,11 +30,11 @@
     {
       foreach ($options as $type => $value) 
       {
-        $method = 'set'.ucfirst($type);
+        $method = "set".ucfirst($type);
         
-        if (is_callable(array($this, $method))) 
+        if (is_callable(array($this, $method)) == true) 
         {
-            $this->$method($value);
+          $this->$method($value);
         }
       }
     }
@@ -43,10 +43,10 @@
     {
       foreach ($this->validators as $validator) 
       {
-        if (!$validator->isValid($this->value)) 
+        if ($validator->isValid($this->value) == false) 
         {
-            $this->errorMessage = $validator->errorMessage();
-            return false;
+          $this->errorMessage = $validator->errorMessage();
+          return false;
         }
       }
         
@@ -90,7 +90,7 @@
       
     public function setLabel($label) 
     {
-      if (is_string($label)) 
+      if (is_string($label) == true) 
       {
         $this->label = $label;
       }
@@ -108,7 +108,7 @@
     
     public function setName($name) 
     {
-      if (is_string($name)) 
+      if (is_string($name) == true) 
       {
         $this->name = $name;
       }
@@ -116,7 +116,7 @@
   
     public function setWidth($width) 
     {
-      if (is_string($width)) 
+      if (is_string($width) == true) 
       {
         $this->width = $width;
       }
@@ -124,7 +124,7 @@
   
     public function setClassStyle($classStyle) 
     {
-      if (is_string($classStyle)) 
+      if (is_string($classStyle) == true) 
       {
         $this->classStyle = $classStyle;
       }
@@ -134,7 +134,7 @@
     {
       foreach ($validators as $validator) 
       {
-        if ($validator instanceof Validator && !in_array($validator, $this->validators)) 
+        if ($validator instanceof Validator && in_array($validator, $this->validators) == false) 
         {
           $this->validators[] = $validator;
         }

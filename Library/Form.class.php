@@ -24,7 +24,7 @@
     
     public function createView()  
     {
-      $view = '';
+      $view = "";
       
       foreach ($this->fields as $field) 
       {
@@ -40,7 +40,7 @@
 
       foreach ($this->fields as $field) 
       {
-        if (!$field->isValid()) 
+        if ($field->isValid() == false) 
         {
           $valid = false;
         }

@@ -10,7 +10,7 @@
 
     public function addRoute(Route $route) 
     {
-      if (!in_array($route, $this->routes)) 
+      if (in_array($route, $this->routes) == false) 
       {
         $this->routes[] = $route;
       }
@@ -22,7 +22,7 @@
       {
         if (($varsValues = $route->match($url)) !== false) 
         {
-          if ($route->hasVars()) 
+          if ($route->hasVars() == true) 
           {
             $varsNames = $route->varsNames();
             $listVars = array();
@@ -42,7 +42,7 @@
         }
       }
         
-      throw new \RuntimeException('Aucune route ne correspond à l\'URL', self::NO_ROUTE);
+      throw new \RuntimeException("No URLs match", self::NO_ROUTE);
     }
     
   }

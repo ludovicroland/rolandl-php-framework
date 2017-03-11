@@ -13,7 +13,7 @@
     
     public function setErrorMessage($errorMessage)
     {
-      if (is_string($errorMessage))
+      if (is_string($errorMessage) == true)
       {
         $this->errorMessage = $errorMessage;
       }

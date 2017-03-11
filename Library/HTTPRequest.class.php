@@ -3,10 +3,10 @@
 
   class HTTPRequest 
   {
-        
+    
 		public function cookieData($key) 
     {
-        return isset($_COOKIE[$key]) ? $_COOKIE[$key] : null;
+      return isset($_COOKIE[$key]) == true ? $_COOKIE[$key] : null;
     }
         
     public function cookieExists($key) 
@@ -16,7 +16,7 @@
         
     public function getData($key) 
     {
-      return isset($_GET[$key]) ? $_GET[$key] : null;
+      return isset($_GET[$key]) == true ? $_GET[$key] : null;
     }
     
     public function getExists($key) 
@@ -26,12 +26,12 @@
     
     public function method() 
     {
-      return $_SERVER['REQUEST_METHOD'];
+      return $_SERVER["REQUEST_METHOD"];
     }
     
     public function postData($key) 
     {
-      return isset($_POST[$key]) ? $_POST[$key] : null;
+      return isset($_POST[$key]) == true ? $_POST[$key] : null;
     }
     
     public function postExists($key) 
@@ -41,7 +41,7 @@
     
     public function requestURI() 
     {
-      return $_SERVER['REQUEST_URI'];
+      return $_SERVER["REQUEST_URI"];
     }
     
   }

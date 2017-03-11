@@ -1,7 +1,7 @@
 <?php
   namespace Library;
   
-  class Config 
+  class I18n 
     extends ApplicationComponent 
   {
     

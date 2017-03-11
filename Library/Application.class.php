@@ -20,7 +20,7 @@
       $this->httpRequest = new HTTPRequest($this);
       $this->httpResponse = new HTTPResponse($this);
       $this->user = new User($this);
-      $this->name = '';
+      $this->name = "";
     }
     
     public function getController() 
@@ -28,35 +28,44 @@
       $router = new \Library\Router($this);
       
       $xml = new \DOMDocument;
-      $xml->load(__DIR__.'/../Applications/'.$this->name.'/Config/routes.xml');
+      $xml->load(__DIR__."/../Applications/".$this->name."/Config/routes.xml");
       
-      $routes = $xml->getElementsByTagName('route');
+      $routes = $xml->getElementsByTagName("route");
       
       foreach ($routes as $route) 
       {
         $vars = array();
         $loadTemplate = true;
         
-        if ($route->hasAttribute('vars')) 
+        if ($route->hasAttribute("vars") == true) 
         {
-          $vars = explode(',', $route->getAttribute('vars'));
+          $vars = explode(",", $route->getAttribute("vars"));
         }
         
-        if ($route->hasAttribute('loadTemplate')) 
+        if ($route->hasAttribute("loadTemplate") == true) 
         {
-          $loadTemplate = $route->getAttribute('loadTemplate') == 'true' ? true : false;
+          $loadTemplate = $route->getAttribute("loadTemplate") == "true" ? true : false;
+        }
+        
+        if ($route->hasAttribute("contentType") == true) 
+        {
+          $contentType = $route->getAttribute("contentType");
+        }
+        else
+        {
+          $contentType = "default";
         }
 
-        $router->addRoute(new Route($route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars, $loadTemplate));
+        $router->addRoute(new Route($route->getAttribute("url"), $route->getAttribute("module"), $route->getAttribute("action"), $vars, $loadTemplate));
       }
       
       try 
       {
         $matchedRoute = $router->getRoute($this->httpRequest->requestURI());
       }
-      catch (\RuntimeException $e) 
+      catch (\RuntimeException $exception) 
       {
-        if ($e->getCode() == \Library\Router::NO_ROUTE) 
+        if ($exception->getCode() == \Library\Router::NO_ROUTE) 
         {
           $this->httpResponse->redirect404($this);
         }
@@ -64,7 +73,7 @@
       
       $_GET = array_merge($_GET, $matchedRoute->vars());
       
-      $controllerClass = 'Applications\\'.$this->name.'\\Modules\\'.$matchedRoute->module().'\\'.$matchedRoute->module().'Controller';
+      $controllerClass = "Applications\\".$this->name."\\Modules\\".$matchedRoute->module()."\\".$matchedRoute->module()."Controller";
       
       return new $controllerClass($this, $matchedRoute->module(), $matchedRoute->action(), $matchedRoute->loadTemplate());
     }

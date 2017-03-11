@@ -5,15 +5,15 @@
     implements \ArrayAccess  
   {
   
-    protected $erreurs = array();
+    protected $errors = array();
     
     protected $id;
     
-    public function __construct(array $donnees = array())
+    public function __construct(array $data = array())
     {
-      if (!empty($donnees)) 
+      if (empty($data) == false) 
       {
-        $this->hydrate($donnees);
+        $this->hydrate($data);
       }
     }
     
@@ -22,9 +22,9 @@
       return empty($this->id);
     }
     
-    public function erreurs() 
+    public function errors() 
     {
-      return $this->erreurs;
+      return $this->errors;
     }
     
     public function id() 
@@ -37,22 +37,22 @@
       $this->id = (int) $id;
     }
     
-    public function hydrate(array $donnees) 
+    public function hydrate(array $data) 
     {
-      foreach ($donnees as $attribut => $valeur) 
+      foreach ($data as $attribut => $value) 
       {
-        $methode = 'set'.ucfirst($attribut);
+        $method = "set".ucfirst($attribut);
         
-        if (is_callable(array($this, $methode))) 
+        if (is_callable(array($this, $method)) == true) 
         {
-          $this->$methode($valeur);
+          $this->$method($value);
         }
       }
     }
     
     public function offsetGet($var) 
     {
-      if (isset($this->$var) && is_callable(array($this, $var))) 
+      if (isset($this->$var) == true && is_callable(array($this, $var)) == true) 
       {
         return $this->$var();
       }
@@ -60,9 +60,9 @@
     
     public function offsetSet($var, $value)
     {
-      $method = 'set'.ucfirst($var);
+      $method = "set".ucfirst($var);
       
-      if (isset($this->$var) && is_callable(array($this, $method))) 
+      if (isset($this->$var) == true && is_callable(array($this, $method)) == true) 
       {
         $this->$method($value);
       }
@@ -70,12 +70,12 @@
     
     public function offsetExists($var) 
     {
-      return isset($this->$var) && is_callable(array($this, $var));
+      return isset($this->$var) == true && is_callable(array($this, $var) == true);
     }
     
     public function offsetUnset($var)
     {
-      throw new \Exception('Impossible de supprimer une quelconque valeur');
+      throw new \Exception("Cannot delete the value");
     }
     
   }

@@ -10,25 +10,25 @@
       switch ($this->severity) 
       {
         case E_USER_ERROR :
-          $type = 'Erreur fatale';
+          $type = "Fatal error";
           break;
         
         case E_WARNING :
         case E_USER_WARNING :
-          $type = 'Attention';
+          $type = "Warning";
           break;
         
         case E_NOTICE :
         case E_USER_NOTICE :
-          $type = 'Note';
+          $type = "Note";
           break;
         
         default :
-          $type = 'Erreur inconnue';
+          $type = "Unknown issue";
           break;
       }
       
-      return '<strong>' . $type . '</strong> : [' . $this->code . '] ' . $this->message . '<br /><strong>' . $this->file . '</strong> à la ligne <strong>' . $this->line . '</strong>';
+      return "<strong>" . $type . "</strong> : [" . $this->code . "] " . $this->message . "<br /><strong>" . $this->file . "</strong> at the line <strong>" . $this->line . "</strong>";
     }
     
   }
@@ -40,11 +40,11 @@
   
   function customException ($e) 
   {
-    echo 'Ligne ', $e->getLine(), ' dans ', $e->getFile(), '<br /><strong>Exception lancée</strong> : ', $e->getMessage();
+    echo "Line ", $e->getLine(), " in ", $e->getFile(), "<br /><strong>Exception</strong> : ", $e->getMessage();
   }
   
-  set_error_handler ('error2exception');
+  set_error_handler ("error2exception");
   
-  set_exception_handler ('customException');
+  set_exception_handler ("customException");
   
 ?>

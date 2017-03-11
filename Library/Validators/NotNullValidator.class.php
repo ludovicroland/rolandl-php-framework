@@ -7,7 +7,7 @@
     
     public function isValid($value) 
     {	   
-      return trim($value) != '';
+      return trim($value) != "";
     }
     
   }

@@ -12,14 +12,14 @@
 
     public function __construct(\Library\Form $form, \Library\Manager $manager, \Library\HTTPRequest $request) 
     {
-        $this->setForm($form);
-        $this->setManager($manager);
-        $this->setRequest($request);		
+      $this->setForm($form);
+      $this->setManager($manager);
+      $this->setRequest($request);		
     }
     
     public function process() 
     {
-      if($this->request->method() == 'POST' && $this->form->isValid()) 
+      if($this->request->method() == "POST" && $this->form->isValid() == true) 
       {
         $this->manager->save($this->form->entity());
         return true;

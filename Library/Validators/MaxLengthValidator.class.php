@@ -28,7 +28,7 @@
       }
       else 
       {
-        throw new \RuntimeException('La longueur maximale doit être un nombre supérieur à 0');
+        throw new \RuntimeException("The max length has to be greater than 0");
       }
     }
     

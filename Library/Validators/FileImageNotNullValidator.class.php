@@ -15,16 +15,11 @@
         
     public function isValid($value) 
     {
-			if(isset($_FILES[$this->name]) AND $_FILES[$this->name]['error'] == 0) 
+			if(isset($_FILES[$this->name]) == true AND $_FILES[$this->name]["error"] == 0) 
       {
-				$formats = array('image/jpeg', 'image/jpg', 'image/png', 'image/pjpeg');
+				$formats = array("image/jpeg", "image/jpg", "image/png", "image/pjpeg");
 				
-				if(in_array($_FILES[$this->name]['type'], $formats)) 
-        {
-					return true;
-				}
-
-				return false;				
+        return in_array($_FILES[$this->name]["type"], $formats);
 			}
 			
       return false;

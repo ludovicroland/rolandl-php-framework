@@ -10,18 +10,18 @@
     protected $vars = array();
       
     public function addVar($var, $value) {
-      if (!is_string($var) || is_numeric($var) || empty($var)) 
+      if (is_string($var) == false || is_numeric($var) == true || empty($var) == true) 
       {
-        throw new \InvalidArgumentException('Le nom de la variable doit être une chaine de caractère non nulle');
+        throw new \InvalidArgumentException("The nam of the variable has to be a non null string");
       }
       
       $this->vars[$var] = $value;
     }
 
     public function getGeneratedPage($loadTemplate) {
-      if (!file_exists($this->contentFile)) 
+      if (file_exists($this->contentFile) == false) 
       {
-        throw new \RuntimeException('La vue spécifiée n\'existe pas');
+        throw new \RuntimeException("The specified view does not exist");
       }
   
       $user = $this->app->user();
@@ -33,22 +33,22 @@
         
       ob_start();
       
-      if($loadTemplate) 
+      if($loadTemplate == true) 
       {
-        require __DIR__.'/../Applications/'.$this->app->name().'/Templates/layout.php';
+        require __DIR__."/../Applications/".$this->app->name()."/Templates/layout.php";
       }
       else
       {
-        require __DIR__.'/layout.php';
+        require __DIR__."/layout.php";
       }
       
       return ob_get_clean();
     }
 
     public function setContentFile($contentFile) {
-      if (!is_string($contentFile) || empty($contentFile))
+      if (is_string($contentFile) == false || empty($contentFile) == true)
       {
-        throw new \InvalidArgumentException('La vue spécifiée est invalide');
+        throw new \InvalidArgumentException("The specified view is not valid");
       }
       
       $this->contentFile = $contentFile;

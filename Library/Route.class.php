@@ -32,7 +32,7 @@
 
     public function match($url) 
     {
-      if (preg_match('`^'.$this->url.'$`', $url, $matches)) 
+      if (preg_match("`^".$this->url."$`", $url, $matches) == true) 
       {
         return $matches;
       } 
@@ -42,7 +42,7 @@
       
     public function setAction($action) 
     {
-      if (is_string($action)) 
+      if (is_string($action) == true) 
       {
         $this->action = $action;
       }
@@ -50,7 +50,7 @@
       
     public function setModule($module) 
     {
-      if (is_string($module)) 
+      if (is_string($module) == true) 
       {
         $this->module = $module;
       }
@@ -58,7 +58,7 @@
 
     public function setUrl($url) 
     {
-      if (is_string($url)) 
+      if (is_string($url) == true) 
       {
         $this->url = $url;
       }
@@ -66,10 +66,15 @@
     
     public function setLoadTemplate($loadTemplate) 
     {
-      if (is_bool($loadTemplate)) 
+      if (is_bool($loadTemplate) == true) 
       {
         $this->loadTemplate = $loadTemplate;
       }
+    }
+    
+    public function setContentType($contentType) 
+    {
+      $this->contentType = $contentType;
     }
 
     public function setVarsNames(array $varsNames) 
@@ -95,6 +100,11 @@
     public function loadTemplate() 
     {
       return $this->loadTemplate;
+    }
+    
+    public function contentType() 
+    {
+      return $this->contentType;
     }
       
     public function vars() 
