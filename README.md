@@ -11,7 +11,7 @@ Rolandl PHP Framework is a light PHP framework based on the OpenClassrooms cours
 
 ##Documentation
 
-The documentation is available on the website : [http://php-framework.rolandl.fr/](http://php-framework.rolandl.fr/).
+The documentation will be available one day...
 
 ##Sites using the Framework
 
