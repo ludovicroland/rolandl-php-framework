@@ -1,8 +1,8 @@
 <?php
-  namespace Library;
+  namespace Library\Validators;
 
   class MaxLengthValidator 
-    extends Validator 
+    extends \Library\Validator  
   {
     
     protected $maxLength;

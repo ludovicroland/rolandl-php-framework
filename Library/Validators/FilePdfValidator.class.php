@@ -1,8 +1,8 @@
 <?php
-  namespace Library;
+  namespace Library\Validators;
   
   class FilePdfValidator 
-    extends Validator 
+    extends \Library\Validator  
   {
       
     protected $name;

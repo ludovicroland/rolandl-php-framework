@@ -1,8 +1,8 @@
 <?php
-  namespace Library;
+  namespace Library\Validators;
   
   class EmailValidator 
-    extends Validator 
+    extends \Library\Validator 
   {        
 
     public function isValid($value) 

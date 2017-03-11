@@ -1,8 +1,8 @@
 <?php
-  namespace Library;
+  namespace Library\Validators;
 
   class ExactOrNullLengthValidator 
-    extends Validator 
+    extends \Library\Validator  
   {
     
     protected $length;

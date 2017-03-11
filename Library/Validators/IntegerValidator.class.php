@@ -1,8 +1,8 @@
 <?php
-  namespace Library;
+  namespace Library\Validators;
 
   class IntegerValidator 
-    extends Validator 
+    extends \Library\Validator  
   {
 
     public function isValid($value) 
