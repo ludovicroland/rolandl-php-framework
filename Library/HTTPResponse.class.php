@@ -22,10 +22,10 @@
       $this->page = new Page($app);
       $this->page->setContentFile(__DIR__."/../Errors/404.php"); 
       $this->addHeader("HTTP/1.0 404 Not Found");   
-      $this->send(true);
+      $this->send(true, "default");
     }
 
-    public function send($loadTemplate)
+    public function send($loadTemplate, $contentType)
     {
       if($contentType != "default")
       {
