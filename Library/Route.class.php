@@ -11,18 +11,21 @@
     protected $url;
     
     protected $loadTemplate;
+    
+    protected $contentType;
       
     protected $varsNames;
       
     protected $vars = array();
       
-    public function __construct($url, $module, $action, array $varsNames, $loadTemplate) 
+    public function __construct($url, $module, $action, array $varsNames, $loadTemplate, $contentType) 
     {
       $this->setUrl($url);
       $this->setModule($module);
       $this->setAction($action);
       $this->setVarsNames($varsNames);
       $this->setLoadTemplate($loadTemplate);
+      $this->setContentType($contentType);
     }
 
     public function hasVars() 

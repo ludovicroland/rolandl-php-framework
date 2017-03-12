@@ -56,7 +56,7 @@
           $contentType = "default";
         }
 
-        $router->addRoute(new Route($route->getAttribute("url"), $route->getAttribute("module"), $route->getAttribute("action"), $vars, $loadTemplate));
+        $router->addRoute(new Route($route->getAttribute("url"), $route->getAttribute("module"), $route->getAttribute("action"), $vars, $loadTemplate, $contentType));
       }
       
       try 
@@ -75,7 +75,7 @@
       
       $controllerClass = "Applications\\".$this->name."\\Modules\\".$matchedRoute->module()."\\".$matchedRoute->module()."Controller";
       
-      return new $controllerClass($this, $matchedRoute->module(), $matchedRoute->action(), $matchedRoute->loadTemplate());
+      return new $controllerClass($this, $matchedRoute->module(), $matchedRoute->action(), $matchedRoute->loadTemplate(), $matchedRoute->contentType());
     }
     
     public function config() 
