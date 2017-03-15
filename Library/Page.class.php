@@ -9,7 +9,8 @@
     
     protected $vars = array();
       
-    public function addVar($var, $value) {
+    public function addVar($var, $value)
+    {
       if (is_string($var) == false || is_numeric($var) == true || empty($var) == true) 
       {
         throw new \InvalidArgumentException("The nam of the variable has to be a non null string");
@@ -18,7 +19,8 @@
       $this->vars[$var] = $value;
     }
 
-    public function getGeneratedPage($loadTemplate) {
+    public function getGeneratedPage($loadTemplate) 
+    {
       if (file_exists($this->contentFile) == false) 
       {
         throw new \RuntimeException("The specified view does not exist");
@@ -45,7 +47,8 @@
       return ob_get_clean();
     }
 
-    public function setContentFile($contentFile) {
+    public function setContentFile($contentFile) 
+    {
       if (is_string($contentFile) == false || empty($contentFile) == true)
       {
         throw new \InvalidArgumentException("The specified view is not valid");
