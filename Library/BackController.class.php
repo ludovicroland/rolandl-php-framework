@@ -47,7 +47,7 @@ class BackController
       throw  new \InvalidArgumentException("The action has to be a valid string");
     }
 
-    $this->module = $action;
+    $this->action = $action;
   }
 
   private function setView($view)
@@ -68,7 +68,7 @@ class BackController
       throw  new \InvalidArgumentException("The 'loadTemplate' parameter has to be a boolean");
     }
 
-    $this->module = $loadTemplate;
+    $this->loadTemplate = $loadTemplate;
   }
 
   private function setContentType($contentType)
