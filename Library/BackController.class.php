@@ -76,6 +76,18 @@ class BackController
     $this->contentType = $contentType;
   }
 
+  public function execute()
+  {
+    $method = "execute" . ucfirst($this->action);
+
+    if (is_callable(array($this, $method)) == false)
+    {
+      throw  new \RuntimeException("The action '" . $this->action . "' is not defined for this module");
+    }
+
+    $this->$method($this->app->httpRequest());
+  }
+
   public function page()
   {
     return $this->page;
