@@ -1,34 +1,37 @@
 <?php
-  namespace Library\Validators;
+namespace Library\Validators;
 
-  class ExactOrNullLengthValidator 
-    extends \Library\Validator  
+use Library\Validator;
+
+class ExactOrNullLengthValidator
+    extends Validator
+{
+
+  protected $length;
+
+  public function __construct($errorMessage, $length)
   {
-    
-    protected $length;
+    parent::__construct($errorMessage);
+    $this->setLength($length);
+  }
 
-    public function __construct($errorMessage, $length) 
+  public function setLength($length)
+  {
+    $length = (int)$length;
+
+    if ($length > 0)
     {
-      parent::__construct($errorMessage);
-      $this->setLength($length);
+      $this->length = $length;
     }
-
-    public function isValid($value) 
+    else
     {
-      return (strlen($value) == $this->length || strlen($value) == 0);
-    }
-
-    public function setLength($length) 
-    {
-      $length = (int) $length;
-      
-      if ($length > 0) 
-      {
-        $this->length = $length;
-      }
-      else 
-      {
-        throw new \RuntimeException("The length has to be greater than 0");
-      }
+      throw new \RuntimeException("The length has to be greater than 0");
     }
   }
+
+  public function isValid($value)
+  {
+    return (strlen($value) == $this->length || strlen($value) == 0);
+  }
+
+}

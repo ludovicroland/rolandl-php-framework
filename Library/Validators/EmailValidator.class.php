@@ -1,13 +1,15 @@
 <?php
-  namespace Library\Validators;
-  
-  class EmailValidator 
-    extends \Library\Validator 
-  {        
+namespace Library\Validators;
 
-    public function isValid($value) 
-    {
-      return preg_match("#^[a-zA-Z0-9_-].+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$#", $value);
-    }
-    
+use Library\Validator;
+
+class EmailValidator
+    extends Validator
+{
+
+  public function isValid($value)
+  {
+    return preg_match("#^[a-zA-Z0-9_-].+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$#", $value);
   }
+
+}

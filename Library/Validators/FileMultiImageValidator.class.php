@@ -1,48 +1,50 @@
 <?php
-  namespace Library\Validators;
-  
-  class FileMultiImageValidator 
-    extends \Library\Validator  
+namespace Library\Validators;
+
+use Library\Validator;
+
+class FileMultiImageValidator
+    extends Validator
+{
+
+  protected $name;
+
+  public function __construct($errorMessage, $name)
   {
-    
-    protected $name;
+    parent::__construct($errorMessage);
+    $this->setName($name);
+  }
 
-    public function __construct($errorMessage, $name) 
-    {
-      parent::__construct($errorMessage);
-      $this->setName($name);
-    }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
 
-    public function isValid($value) 
+  public function isValid($value)
+  {
+    if (isset($_FILES[$this->name]) == true)
     {
-      if(isset($_FILES[$this->name]) == true) 
+      foreach ($_FILES[$this->name]["name"] as $key => $value)
       {
-        foreach($_FILES[$this->name]["name"] as $key => $value) 
+        if ($_FILES[$this->name]["error"][$key] == 0)
         {
-          if($_FILES[$this->name]["error"][$key] == 0) 
-          {
-            $formats = array("image/jpeg", "image/jpg", "image/png", "image/pjpeg");
-          
-            if(in_array($_FILES[$this->name]["type"][$key], $formats) == false) 
-            {
-              return false;
-            }
-          }
-          else 
+          $formats = array("image/jpeg", "image/jpg", "image/png", "image/pjpeg");
+
+          if (in_array($_FILES[$this->name]["type"][$key], $formats) == false)
           {
             return false;
           }
         }
-        
-        return true;
+        else
+        {
+          return false;
+        }
       }
-      
+
       return true;
     }
-      
-    public function setName($name) 
-    {
-      $this->name = $name;
-    }
-    
+
+    return true;
   }
+
+}

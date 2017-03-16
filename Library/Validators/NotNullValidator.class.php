@@ -1,13 +1,15 @@
 <?php
-  namespace Library\Validators;
+namespace Library\Validators;
 
-  class NotNullValidator 
-    extends \Library\Validator  
+use Library\Validator;
+
+class NotNullValidator
+    extends Validator
+{
+
+  public function isValid($value)
   {
-    
-    public function isValid($value) 
-    {	   
-      return trim($value) != "";
-    }
-    
+    return trim($value) != "";
   }
+
+}
