@@ -1,63 +1,67 @@
 <?php
-  namespace Library\Fields;
-	
-	use \Library\PDOFactory;
-    
-  class SelectField 
-    extends \Library\Field 
-  { 
-		
-    protected $sql;
-	
-    public function buildWidget() {
-      $widget = "<div class=\"form-group";
-        
-      if (empty($this->errorMessage) == false) 
-      {
-        $widget .= " has-error";
-      }
-        
-      $widget .= "\">";            
-      $widget .= "<label class=\"col-lg-2 control-label\" for=\"".$this->name."\">".$this->label."</label>";
-      $widget .= "<div class=\"col-lg-3\">";
-      $widget .= "<select class=\"form-control\" name=\"".$this->name."\"";
+namespace Library\Fields;
 
-      if (empty($this->classStyle) == false) 
-      {
-        $widget .= " class=\"".$this->classStyle."\"";
-      }
+use Library\Field;
+use Library\PDOFactory;
 
-      $widget .= ">";
+class SelectField
+    extends Field
+{
 
-      $requete = PDOFactory::getMysqlConnexion()->query($this->sql);
+  protected $sql;
 
-      while($item = $requete->fetch(\PDO::FETCH_ASSOC)) 
-      {				
-        $widget .= "<option value=\"".$item["value"]."\"";
+  public function buildWidget()
+  {
+    $widget = "<div class=\"form-group";
 
-        if($this->value == $item["value"])
-        {
-          $widget .=" selected";
-        }
-
-        $widget .= ">".$item["libelle"]."</option>"; 
-      }
-
-      $widget .= "</select>";
-
-      if (empty($this->errorMessage) == false) 
-      {
-        $widget .= "<span class=\"help-block\">";
-        $widget .= $this->errorMessage;
-        $widget .= "</span>";
-      }
-
-      return $widget .= "</div></div>";
-    }
-
-    public function setSql($sql) 
+    if (empty($this->errorMessage) == false)
     {
-      $this->sql = $sql;
+      $widget .= " has-error";
     }
-    
+
+    $widget .= "\">";
+    $widget .= "<label class=\"col-lg-2 control-label\" for=\"" . $this->name . "\">" . $this->label . "</label>";
+    $widget .= "<div class=\"col-lg-3\">";
+    $widget .= "<select class=\"form-control\" name=\"" . $this->name . "\"";
+
+    if (empty($this->classStyle) == false)
+    {
+      $widget .= " class=\"" . $this->classStyle . "\"";
+    }
+
+    $widget .= ">";
+
+    $requete = PDOFactory::getMysqlConnexion()->query($this->sql);
+
+    while ($item = $requete->fetch(\PDO::FETCH_ASSOC))
+    {
+      $widget .= "<option value=\"" . $item["value"] . "\"";
+
+      if ($this->value == $item["value"])
+      {
+        $widget .= " selected";
+      }
+
+      $widget .= ">" . $item["libelle"] . "</option>";
+    }
+
+    $widget .= "</select>";
+
+    if (empty($this->errorMessage) == false)
+    {
+      $widget .= "<span class=\"help-block\">";
+      $widget .= $this->errorMessage;
+      $widget .= "</span>";
+    }
+
+    $widget .= "</div></div>";
+
+    return $widget;
   }
+
+  public function setSql($sql)
+  {
+    $this->sql = $sql;
+  }
+
+}
