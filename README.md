@@ -1,7 +1,7 @@
 # Rolandl PHP Framework
 
 Contributors: Ludovic Roland ([http://www.rolandl.fr](http://www.rolandl.fr))<br/>
-Stable tag: 1.1.1<br/>
+Stable tag: 1.2.0<br/>
 License: MIT<br/>
 
 ## Description
@@ -36,6 +36,11 @@ limitations under the License.
 ```
 
 ## Changelog
+
+### 1.2.0
+
+* Clean-up the code
+* Add the possibility to use a custom `contentType` for a route into the `routes.xml` file
 
 ### 1.1.1
 
