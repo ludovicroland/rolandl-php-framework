@@ -12,6 +12,8 @@ class Managers
   public function __construct($api, $dao)
   {
     parent::__construct($dao);
+
+    $this->api = $api;
   }
 
   public function getManagerOf($module)

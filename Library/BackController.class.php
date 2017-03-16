@@ -5,11 +5,13 @@ class BackController
     extends ApplicationComponent
 {
 
+  protected $managers = null;
+
+  protected $page = null;
+
   protected $action = "";
 
   protected $module = "";
-
-  protected $page = null;
 
   protected $view = "";
 
@@ -22,7 +24,9 @@ class BackController
   {
     parent::__construct($app);
 
+    $this->managers = new Managers("PDO", PDOFactory::getMysqlConnexion());
     $this->page = new Page($app);
+
     $this->setModule($module);
     $this->setAction($action);
     $this->setView($action);
