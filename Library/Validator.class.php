@@ -1,29 +1,29 @@
 <?php
-  namespace Library;
+namespace Library;
 
-  abstract class Validator
+abstract class Validator
+{
+
+  protected $errorMessage;
+
+  public function __construct($errorMessage)
   {
-    
-    protected $errorMessage;
-        
-    public function __construct($errorMessage)
-    {
-      $this->setErrorMessage($errorMessage);
-    }
-    
-    public function setErrorMessage($errorMessage)
-    {
-      if (is_string($errorMessage) == true)
-      {
-        $this->errorMessage = $errorMessage;
-      }
-    }
-    
-    public function errorMessage()
-    {
-      return $this->errorMessage;
-    }
-        
-    abstract public function isValid($value);
-         
+    $this->setErrorMessage($errorMessage);
   }
+
+  public function setErrorMessage($errorMessage)
+  {
+    if (is_string($errorMessage) == true)
+    {
+      $this->errorMessage = $errorMessage;
+    }
+  }
+
+  public function errorMessage()
+  {
+    return $this->errorMessage;
+  }
+
+  abstract public function isValid($value);
+
+}
