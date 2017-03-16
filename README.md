@@ -1,18 +1,18 @@
-#Rolandl PHP Framework
+# Rolandl PHP Framework
 
 Contributors: Ludovic Roland ([http://www.rolandl.fr](http://www.rolandl.fr))<br/>
 Stable tag: 1.1.1<br/>
 License: MIT<br/>
 
-##Description
+## Description
 
 Rolandl PHP Framework is a light PHP framework based on the OpenClassrooms course "[Programmez en orienté objet en PHP](http://openclassrooms.com/courses/programmez-en-oriente-objet-en-php)" and strongly connected to [Bootstrap](http://getbootstrap.com/).
 
-##Documentation
+## Documentation
 
 The documentation will be available one day...
 
-##Sites using the Framework
+## Sites using the Framework
 
 * http://www.sylvie-brouillet.com/
 * http://www.collectionsperso.fr/
@@ -35,17 +35,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-##Changelog
+## Changelog
 
-###1.1.1
+### 1.1.1
 
 * Fixed syntax error into the `FormHandler` class.
 
-###1.1.0
+### 1.1.0
 
 * Updated the way an error 404 is managed
 * Added the possibility to do not load the Template of an application in order to generate files that are not PHP like a PDF
 
-###1.0.0
+### 1.0.0
 
 * First public version of the framework.
